@@ -49,7 +49,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="mt-8 text-center">
-          <p>&copy; 2024 <Link href="/" className="text-primary hover:underline">Gaurav Wankhede</Link>. All rights reserved.</p>
+          <p>&copy; 2024 <Link href="https://gaurav-wankhede.vercel.app" className="text-primary hover:underline">Gaurav Wankhede</Link>. All rights reserved.</p>
         </div>
       </div>
     </footer>
