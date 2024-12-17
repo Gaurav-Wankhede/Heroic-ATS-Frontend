@@ -49,14 +49,16 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-background p-6">
       <div className="max-w-4xl mx-auto space-y-6">
+        {/* Header Section */}
         <div className="flex justify-between items-center">
           <h1 className="text-3xl font-bold">Resume ATS Analyzer</h1>
-          <ThemeToggle />
         </div>
 
+        {/* Main Content Card */}
         <Card className="p-6 space-y-6">
           <FileUploader file={file} setFile={setFile} />
 
+          {/* Job Description Textarea */}
           <div className="space-y-2">
             <label htmlFor="jobDescription" className="text-sm font-medium">
               Job Description
@@ -87,11 +89,12 @@ export default function Home() {
             </select>
           </div>
 
-          <div className="flex gap-4">
+          {/* Submit and Clear Buttons */}
+          <div className="flex flex-wrap gap-4">
             <Button
               onClick={handleSubmit}
               disabled={isLoading || !file || !jobDescription}
-              className="flex-1"
+              className="flex-1 sm:flex-none"
             >
               {isLoading ? (
                 <>
@@ -108,7 +111,7 @@ export default function Home() {
             <Button
               onClick={handleClear}
               variant="outline"
-              className="flex-1"
+              className="flex-1 sm:flex-none"
             >
               <RefreshCw className="mr-2 h-4 w-4" />
               Clear Memory
@@ -116,6 +119,7 @@ export default function Home() {
           </div>
         </Card>
 
+        {/* Display Analysis Result */}
         {analysis && <AnalysisResult analysis={analysis} />}
       </div>
     </main>
