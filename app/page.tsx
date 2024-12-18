@@ -48,76 +48,80 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-background p-6">
-      <div className="max-w-4xl mx-auto space-y-6">
+      <div className="mx-auto space-y-6">
         {/* Header Section */}
         <div className="flex justify-between items-center">
           <h1 className="text-3xl font-bold">Resume ATS Analyzer</h1>
         </div>
 
         {/* Main Content Card */}
-        <Card className="p-6 space-y-6">
-          <FileUploader file={file} setFile={setFile} />
+        <div className="flex justify-center mx-4">
+          <Card className="p-6 space-y-6 w-full border rounded-md">
+            <FileUploader file={file} setFile={setFile} />
 
-          {/* Job Description Textarea */}
-          <div className="space-y-2">
-            <label htmlFor="jobDescription" className="text-sm font-medium">
-              Job Description
-            </label>
-            <Textarea
-              id="jobDescription"
-              placeholder="Paste the job description here..."
-              value={jobDescription}
-              onChange={(e) => setJobDescription(e.target.value)}
-              className="min-h-[200px]"
-            />
-          </div>
+            {/* Job Description Textarea */}
+            <div className="space-y-2">
+              <label htmlFor="jobDescription" className="text-sm font-medium">
+                Job Description
+              </label>
+              <Textarea
+                id="jobDescription"
+                placeholder="Paste the job description here..."
+                value={jobDescription}
+                onChange={(e) => setJobDescription(e.target.value)}
+                className="min-h-[200px]"
+              />
+            </div>
 
-          {/* Experience Level Select */}
-          <div className="space-y-2">
-            <label htmlFor="experienceLevel" className="text-sm font-medium">
-              Experience Level
-            </label>
-            <select
-              id="experienceLevel"
-              value={experienceLevel}
-              onChange={(e) => setExperienceLevel(e.target.value)}
-              className="border p-2 rounded-md w-full"
-            >
-              <option value="Fresher">Fresher</option>
-              <option value="2 Years of Experience">2 Years of Experience</option>
-              <option value="More than 2 Years of Experience">More than 2 Years of Experience</option>
-            </select>
-          </div>
+            {/* Experience Level Select */}
+            <div className="space-y-2">
+              <label htmlFor="experienceLevel" className="text-sm font-medium">
+                Experience Level
+              </label>
+              <select
+                id="experienceLevel"
+                value={experienceLevel}
+                onChange={(e) => setExperienceLevel(e.target.value)}
+                className="border p-2 rounded-md w-full"
+              >
+                <option value="Fresher (0 Years)">Fresher (0 Years)</option>
+                <option value="Entry Level (Under 2 Years)">Entry Level (Under 2 Years)</option>
+                <option value="Mid Level (2-5 Years)">Mid Level (2-5 Years)</option>
+                <option value="Senior(5-10 Years)">Senior(5-10 Years)</option>
+                <option value="Executive(10+ Years)">Executive(10+ Years)</option>
+              </select>
+            </div>
 
-          {/* Submit and Clear Buttons */}
-          <div className="flex flex-wrap gap-4">
-            <Button
-              onClick={handleSubmit}
-              disabled={isLoading || !file || !jobDescription}
-              className="flex-1 sm:flex-none"
-            >
-              {isLoading ? (
-                <>
-                  <RefreshCw className="mr-2 h-4 w-4 animate-spin" />
-                  Analyzing...
-                </>
-              ) : (
-                <>
-                  <Send className="mr-2 h-4 w-4" />
-                  Analyze Resume
-                </>
-              )}
-            </Button>
-            <Button
-              onClick={handleClear}
-              variant="outline"
-              className="flex-1 sm:flex-none"
-            >
-              <RefreshCw className="mr-2 h-4 w-4" />
-              Clear Memory
-            </Button>
-          </div>
-        </Card>
+            {/* Submit and Clear Buttons */}
+            <div className="flex flex-wrap gap-4">
+              <Button
+                onClick={handleSubmit}
+                disabled={isLoading || !file || !jobDescription}
+                className="flex-1 sm:flex-none"
+              >
+                {isLoading ? (
+                  <>
+                    <RefreshCw className="mr-2 h-4 w-4 animate-spin" />
+                    Analyzing...
+                  </>
+                ) : (
+                  <>
+                    <Send className="mr-2 h-4 w-4" />
+                    Analyze Resume
+                  </>
+                )}
+              </Button>
+              <Button
+                onClick={handleClear}
+                variant="outline"
+                className="flex-1 sm:flex-none"
+              >
+                <RefreshCw className="mr-2 h-4 w-4" />
+                Clear Memory
+              </Button>
+            </div>
+          </Card>
+        </div>
 
         {/* Display Analysis Result */}
         {analysis && <AnalysisResult analysis={analysis} />}
